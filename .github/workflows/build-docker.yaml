@@ -1,0 +1,29 @@
+name: Build and Publish image to Docker Hub
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'api/Dockerfile'
+      - 'front-end-nextjs/Dockerfile'
+
+jobs:
+  publish_images:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # ✅ This line is required for OIDC!
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: build image
+        run: |
+          docker build ./api/ -t duybo95/devops-qr-code-api:latest
+          docker build ./front-end-nextjs/ -t duybo95/devops-qr-code-frontend:latest
+
+      - name: Push image to Docker Hub
+        run: |
+          docker login -u duybo95 -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push duybo95/devops-qr-code-api:latest
+          docker push duybo95/devops-qr-code-frontend:latest
