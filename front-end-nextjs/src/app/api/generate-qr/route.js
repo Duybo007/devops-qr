@@ -10,7 +10,7 @@ export async function POST(request) {
   }
 
   try {
-    const backendUrl = 'https://qr.duyngo.xyz/backend/generate-qr';
+    const backendUrl = 'https://qr.duyngo.xyz/api/generate-qr';
     // const response = await axios.post(`http://qr-api-service/generate-qr/?url=${encodeURIComponent(url)}`);
     const response = await axios.post(`${backendUrl}?url=${encodeURIComponent(url)}`);
     return NextResponse.json(response.data);
