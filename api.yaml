@@ -15,7 +15,7 @@ spec:
       serviceAccountName: qr-code-sa
       containers:
       - name: qr-api
-        image: duybo95/devops-qr-code-api:latest
+        image: duybo95/devops-qr-code-api:5
         ports:
         - containerPort: 80
 ---
