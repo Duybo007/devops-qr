@@ -11,7 +11,7 @@ export async function POST(request) {
   console.log("Hitting BE")
   try {
     console.log("Hitting BE try block")
-    const backendUrl = 'https://qr.duyngo.xyz/api/generate-qr';
+    const backendUrl = 'http://qr.duyngo.xyz/api/generate-qr';
     // const response = await axios.post(`http://qr-api-service/generate-qr/?url=${encodeURIComponent(url)}`);
     const response = await axios.post(`${backendUrl}?url=${encodeURIComponent(url)}`);
     return NextResponse.json(response.data);
