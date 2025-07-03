@@ -25,7 +25,7 @@ app.add_middleware(
 
 # AWS S3 Configuration
 s3 = boto3.client('s3')
-bucket_name = 'kube-duyngo'
+bucket_name = 'binh-aws-bucket'
 
 @app.post("/generate-qr/")
 async def generate_qr(url: str):
