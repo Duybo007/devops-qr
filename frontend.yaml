@@ -23,7 +23,7 @@ kind: Service
 metadata:
   name: qr-frontend-service
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: qr-frontend
   ports:
