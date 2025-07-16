@@ -36,3 +36,7 @@ spec:
                 name: qr-frontend-service
                 port:
                   number: 80
+  tls:
+    - hosts:
+        - qr.duyngo.xyz
+      secretName: duyngo-co-tls
