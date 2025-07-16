@@ -36,3 +36,25 @@ spec:
                 name: qr-frontend-service
                 port:
                   number: 80
+    - host: www.qr.duyngo.xyz
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: qr-api-service
+                port:
+                  number: 5000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: qr-frontend-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - duyngo.xyz
+        - www.duyngo.xyz
+      secretName: duyngo-co-tls
