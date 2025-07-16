@@ -18,7 +18,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: duyngo.xyz
+    - host: qr.duyngo.xyz
       http:
         paths:
           - path: /api
