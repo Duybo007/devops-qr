@@ -9,14 +9,8 @@ export async function POST(request) {
     return NextResponse.json({ error: 'URL is required' }, { status: 400 });
   }
 
-  // Use internal Kubernetes DNS if running in cluster (simple check)
-  // Otherwise fallback to public hostname
-  const backendBaseUrl = process.env.KUBERNETES_SERVICE_HOST
-    ? 'http://qr-api-service'   // inside cluster
-    : 'https://qr.duyngo.xyz';  // local/dev environment
-
   try {
-    const response = await axios.post(`${backendBaseUrl}/api/generate-qr?url=${encodeURIComponent(url)}`);
+    const response = await axios.post(`http://qr-api-service/generate-qr/?url=${encodeURIComponent(url)}`);
     return NextResponse.json(response.data);
   } catch (error) {
     console.error('Error generating QR Code:', error);
