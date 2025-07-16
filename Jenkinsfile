@@ -100,7 +100,7 @@ pipeline {
         stage('Build-Tag & Push Backend Docker Image') {
             steps {
                 script {
-                    def backendImage = "duybo95devops-qr-code-api"
+                    def backendImage = "duybo95/devops-qr-code-api"
                     def backendTag = "${backendImage}:${BUILD_NUMBER}"
                     
                     withDockerRegistry(credentialsId: 'dockerhub') {
