@@ -1,50 +1,50 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: qr
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: qr.duyngo.xyz
-      http:
-        paths:
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: qr-api-service
-                port:
-                  number: 80
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: qr-frontend-service
-                port:
-                  number: 80
-    - host: www.qr.duyngo.xyz
-      http:
-        paths:
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: qr-api-service
-                port:
-                  number: 80
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: qr-frontend-service
-                port:
-                  number: 80
-  tls:
-    - hosts:
-        - qr.duyngo.xyz
-        - www.qr.duyngo.xyz
-      secretName: qr-duyngo-tls
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: qr
+#   annotations:
+#     cert-manager.io/cluster-issuer: letsencrypt-prod
+#     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+#     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#     - host: qr.duyngo.xyz
+#       http:
+#         paths:
+#           - path: /api
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: qr-api-service
+#                 port:
+#                   number: 80
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: qr-frontend-service
+#                 port:
+#                   number: 80
+#     - host: www.qr.duyngo.xyz
+#       http:
+#         paths:
+#           - path: /api
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: qr-api-service
+#                 port:
+#                   number: 80
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: qr-frontend-service
+#                 port:
+#                   number: 80
+#   tls:
+#     - hosts:
+#         - qr.duyngo.xyz
+#         - www.qr.duyngo.xyz
+#       secretName: qr-duyngo-tls
