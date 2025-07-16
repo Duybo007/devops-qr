@@ -3,16 +3,6 @@ kind: Ingress
 metadata:
   name: qr
   annotations:
-    # ALB annotations (commented out for now)
-    # kubernetes.io/ingress.class: alb
-    # alb.ingress.kubernetes.io/scheme: internet-facing
-    # alb.ingress.kubernetes.io/target-type: ip
-    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:658642482266:certificate/8a307e10-5bf5-4538-be99-c0627e090da3
-    # alb.ingress.kubernetes.io/ssl-redirect: '443'
-    # alb.ingress.kubernetes.io/group.name: tic-tac-toe
-    # alb.ingress.kubernetes.io/group.order: '1'
-
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -45,7 +35,7 @@ spec:
               service:
                 name: qr-api-service
                 port:
-                  number: 5000
+                  number: 80
           - path: /
             pathType: Prefix
             backend:
@@ -55,6 +45,6 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - duyngo.xyz
-        - www.duyngo.xyz
-      secretName: duyngo-co-tls
+        - qr.duyngo.xyz
+        - www.qr.duyngo.xyz
+      secretName: qr-duyngo-tls
